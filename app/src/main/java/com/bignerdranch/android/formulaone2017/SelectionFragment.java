@@ -24,6 +24,7 @@ public class SelectionFragment extends Fragment {
     private Button mButtonTeam, mButtonDriver;
     private TextView mTextViewTeam;
     private static final int REQUEST_TEAM=1;
+    private static final int REQUEST_DRIVER=2;
     public static final String TAG = "Selection Fragment";
     private F1Teams2017 mTeams2017;
     List<Team> teamList;
@@ -40,13 +41,19 @@ public class SelectionFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = TeamListActivity.newIntent(getActivity());
 
-
                 startActivityForResult(intent, REQUEST_TEAM);
             }
         });
 
 
         mButtonDriver = (Button) view.findViewById(R.id.button_choose_driver);
+        mButtonDriver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = DriverListActivity.newIntent(getActivity());
+                startActivityForResult(intent, REQUEST_DRIVER);
+            }
+        });
 
         mTextViewTeam = (TextView) view.findViewById(R.id.user_team);
 
@@ -71,9 +78,7 @@ public class SelectionFragment extends Fragment {
                 Log.d(TAG,"data is "+i);
 
             }
-            else if (resultCode==RESULT_CANCELED){
-
-            }
         }
+
     }
 }

@@ -21,6 +21,12 @@
         <activity android:name=".TeamListActivity">
         </activity>
 
+        <activity android:name=".DriverListActivity">
+        </activity>
+
+
+
+
     </application>
 
 </manifest>
