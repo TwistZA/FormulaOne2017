@@ -33,7 +33,7 @@ public class F1Teams2017 {
         mTeamList.add(new Team("Mercedes", new String[]{"Lewis Hamilton", "Valtteri Bottas"},"Mercedes",R.drawable.mercedes2));
         mTeamList.add(new Team("Red Bull Racing", new String[]{"Daniel Ricciardo", "Max Verstappen"},"TAG Heuer",R.drawable.redbull5));
         mTeamList.add(new Team("Renault", new String[]{"Nico Hülkenberg", "Jolyon Palmer"},"Renault",R.drawable.renaultsportf1logo230x90));
-        mTeamList.add(new Team("Sauber", new String[]{"Marcus Ericsson", "Germany Pascal Wehrlein"},"Ferrari",R.drawable.sauber4));
+        mTeamList.add(new Team("Sauber", new String[]{"Marcus Ericsson", "Pascal Wehrlein"},"Ferrari",R.drawable.sauber4));
         mTeamList.add(new Team("Toro Rosso", new String[]{"Daniil Kvyat", "Carlos Sainz Jr"},"Renault",R.drawable.tororosso5));
         mTeamList.add(new Team("Williams", new String[]{"Lance Stroll", "Felipe Massa"},"Mercedes",R.drawable.williams6));
 

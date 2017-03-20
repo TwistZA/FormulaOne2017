@@ -22,7 +22,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class SelectionFragment extends Fragment {
     private Button mButtonTeam, mButtonDriver;
-    private TextView mTextViewTeam;
+    private TextView mTextViewTeam,mTextViewDriver1,mTextViewDriver2;
     private static final int REQUEST_TEAM=1;
     private static final int REQUEST_DRIVER=2;
     public static final String TAG = "Selection Fragment";
@@ -62,6 +62,8 @@ public class SelectionFragment extends Fragment {
 
         mUserTeamLogo = (ImageView) view.findViewById(R.id.user_team_logo);
 
+        mTextViewDriver1 = (TextView) view.findViewById(R.id.user_driver1);
+        mTextViewDriver2 = (TextView) view.findViewById(R.id.user_driver2);
 
 
         return view;
@@ -76,6 +78,17 @@ public class SelectionFragment extends Fragment {
                 mTextViewTeam.setText(teamList.get(i).getTeamName());
                 mUserTeamLogo.setImageResource(teamList.get(i).getTeamLogo());
                 Log.d(TAG,"data is "+i);
+
+            }
+        }
+
+        if (requestCode==REQUEST_DRIVER){
+            if (resultCode==RESULT_OK){
+                String driver1 = DriverListFragment.getDriver1(data);
+                String driver2 = DriverListFragment.getDriver2(data);
+
+                mTextViewDriver1.setText(driver1);
+                mTextViewDriver2.setText(driver2);
 
             }
         }
