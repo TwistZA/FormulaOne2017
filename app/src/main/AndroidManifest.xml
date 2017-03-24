@@ -21,6 +21,9 @@
         <activity android:name=".TeamListActivity">
         </activity>
 
+        <activity android:name=".TeamPagerActivity">
+        </activity>
+
         <activity android:name=".DriverListActivity">
         </activity>
 

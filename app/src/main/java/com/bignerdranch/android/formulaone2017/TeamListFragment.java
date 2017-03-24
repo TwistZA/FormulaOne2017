@@ -95,6 +95,9 @@ public class TeamListFragment extends Fragment {
             data.putExtra(EXTRA_TEAM,getAdapterPosition());
             getActivity().setResult(RESULT_OK, data);
 
+            Intent intent = TeamPagerActivity.newIntent(getActivity(), getAdapterPosition());
+            startActivity(intent);
+
             getActivity().finish();
         }
 

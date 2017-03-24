@@ -12,7 +12,7 @@ import android.support.v4.app.Fragment;
  * Created by Avinash.Ganga on 2017/03/17.
  */
 
-class DriverListActivity extends SingleFragmentActivity{
+public class DriverListActivity extends SingleFragmentActivity{
 
     @Override
     protected Fragment createFragment() {

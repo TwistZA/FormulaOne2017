@@ -12,7 +12,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -22,16 +25,16 @@ import java.util.UUID;
 public class TeamFragment extends Fragment {
 
     private Team mTeam;
-    private EditText mTitle_Field;
-    private CheckBox mSolvedCheckBox;
-    private Button mDateButton;
+    private TextView mTeamName;
+    private ImageView mTeamLogo;
+
     private final static String TAG = "TeamFragment";
     private static final String ARG_TEAM_ID = "team_id";
 
 
-    public static TeamFragment newInstance(UUID crimeId){
+    public static TeamFragment newInstance(int index){
         Bundle args = new Bundle();
-        args.putSerializable(ARG_TEAM_ID, crimeId);
+        args.putSerializable(ARG_TEAM_ID, index);
 
         TeamFragment fragment = new TeamFragment();
         fragment.setArguments(args);
@@ -41,51 +44,22 @@ public class TeamFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //mTeam = new Team();
 
-        UUID crimeId = (UUID) getArguments().getSerializable(ARG_TEAM_ID);
-        mTeam = F1Teams2017.get(getActivity()).getTeamList(crimeId);
+        int index  = (int) getArguments().getSerializable(ARG_TEAM_ID);
 
+        mTeam = F1Teams2017.get(getActivity()).getTeamList().get(index);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v= inflater.inflate(R.layout.fragment_crime,container,false);
+        View v= inflater.inflate(R.layout.fragment_team,container,false);
 
-        mTitle_Field = (EditText) v.findViewById(R.id.crime_title);
-        mTitle_Field.setText(mCrime.getTitle());
-        mTitle_Field.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        mTeamName = (TextView) v.findViewById(R.id.viewpager_team_name);
+        mTeamName.setText(mTeam.getTeamName());
 
-            }
+        mTeamLogo = (ImageView) v.findViewById(R.id.viewpager_team_logo);
+        mTeamLogo.setImageResource(mTeam.getTeamLogo());
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mCrime.setTitle(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        mDateButton = (Button) v.findViewById(R.id.crime_date);
-        String sDate = (String) DateFormat.format("EEEE, d MMMM yyyy",mCrime.getDate());
-        mDateButton.setText(sDate);
-        mDateButton.setEnabled(false);
-
-
-
-        mSolvedCheckBox = (CheckBox) v.findViewById(R.id.crime_solved);
-        mSolvedCheckBox.setChecked(mCrime.isSolved());
-        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mCrime.setSolved(isChecked);
-            }
-        });
 
         return v;
     }
